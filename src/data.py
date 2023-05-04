@@ -3,18 +3,17 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-def get_historical_prices(ticker:str):
+def get_historical_prices(ticker:str,timerange):
     """Get historical prices for a given ticker"""
 
     # get data on this ticker
     tickerData = yf.Ticker(ticker)
     
     # get the historical prices for this ticker
-    tickerDf = tickerData.history(period='max')
+    tickerDf = tickerData.history(period=timerange)
 
     # return the historical prices
     return tickerDf
-
 
 def create_moving_averages(small_size,large_size,df):
     """Create moving averages for a given dataframe"""
@@ -30,10 +29,10 @@ def create_moving_averages(small_size,large_size,df):
 
     return df
 
-def get_data(ticker,small_size,large_size):
+def get_data(ticker,small_size,large_size,timerange="max"):
     
     # use yfinance to get price data 
-    df = get_historical_prices(ticker)
+    df = get_historical_prices(ticker,timerange=timerange)
 
     # create moving averages
     df = create_moving_averages(small_size,large_size,df)

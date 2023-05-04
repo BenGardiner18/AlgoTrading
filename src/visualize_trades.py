@@ -35,6 +35,8 @@ def plot_price_n_moving_averages(df):
     leg = ax.legend(loc='upper left')
     ax.set_title('ETH-USD')
 
+    plt.savefig("./images/price_n_moving_averages.png")
+
     plt.show()
 
 def plot_decisions(df,n=0):
@@ -67,7 +69,10 @@ def plot_decisions(df,n=0):
     leg = ax.legend(loc='upper right')
     ax.set_title('ETH-USD')
 
+    plt.savefig("./images/decisions.png")
+
     plt.show()
+    
 
 def visualize(df):
     plot_price_n_moving_averages(df)
